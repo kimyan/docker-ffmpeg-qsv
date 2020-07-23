@@ -1,0 +1,1 @@
+[Debianで QSV (-hwaccel qsv) が使える ffmpegをビルドする手順](https://qiita.com/Daigorian/items/3b5bf97f58b071e0945d)を参考にDockerfileを作りました。
