@@ -4,11 +4,8 @@ FROM ubuntu:20.04 AS ffmpeg-qsv-build
 ENV DEBIAN_FRONTEND=noninteractive
 
 # install build tools
-RUN apt-get update
-RUN apt-get -y install build-essential git cmake pkg-config
-
-# for debug
-RUN apt-get -y install vainfo
+RUN apt-get update && \
+    apt-get -y install build-essential git cmake pkg-config
 
 # intstall libva
 RUN apt-get -y install meson libdrm-dev automake libtool && \
@@ -48,6 +45,9 @@ RUN cd && \
     make install && \
     sh -c "echo /opt/intel/mediasdk/lib/ >> /etc/ld.so.conf.d/mediasdk.conf" && \
     ldconfig
+
+# for debug
+# RUN apt-get -y install vainfo
 
 RUN cd && \
     apt-get -y install software-properties-common && \
